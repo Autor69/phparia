@@ -408,7 +408,7 @@ class Channel extends Resource
      */
     public function deleteChannel()
     {
-        $this->client->channels()->deleteChannel($this->id);
+        $this->client->channels()->delete($this->id);
     }
 
     /**

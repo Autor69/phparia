@@ -95,7 +95,7 @@ class AnswerAndDialExample
                 'dial_example_bridge');
             $this->bridge->addChannel($channel->getId());
             try {
-                $this->dialedChannel = $this->client->channels()->createChannel($dialString, null, null, null,
+                $this->dialedChannel = $this->client->channels()->originate($dialString, null, null, null,
                     $this->client->getStasisApplicationName(), 'dialed', '8005551212');
             } catch (ServerException $e) {
                 $this->log($e->getMessage());

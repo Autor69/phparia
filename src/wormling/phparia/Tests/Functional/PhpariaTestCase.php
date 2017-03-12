@@ -59,7 +59,7 @@ abstract class PhpariaTestCase extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        $channels = $this->client->channels()->getChannels();
+        $channels = $this->client->channels()->list();
         foreach ($channels as $channel) {
             $channel->hangup();
         }

@@ -25,7 +25,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -50,7 +50,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -77,7 +77,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();

@@ -26,7 +26,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -48,7 +48,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, 'default', '8185551212', 1, null,
+                $this->client->channels()->originate($this->dialString, 'default', '8185551212', 1, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -161,7 +161,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -186,7 +186,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -216,7 +216,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -238,7 +238,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -259,7 +259,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -282,7 +282,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();
@@ -307,7 +307,7 @@ namespace {
                 $this->client->stop();
             });
             $this->client->getAriClient()->onConnect(function () {
-                $this->client->channels()->createChannel($this->dialString, null, null, null, null,
+                $this->client->channels()->originate($this->dialString, null, null, null, null,
                     $this->client->getStasisApplicationName());
             });
             $this->client->run();

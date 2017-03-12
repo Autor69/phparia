@@ -54,7 +54,7 @@ class Channels extends MediaBase
      *
      * @return Channel[]
      */
-    public function getChannels()
+    public function list()
     {
         $uri = '/channels';
         $response = $this->client->getEndpoint()->get($uri);
@@ -89,7 +89,7 @@ class Channels extends MediaBase
      * @throws InvalidParameterException
      * @throws ServerException
      */
-    public function createChannel(
+    public function originate(
         $endpoint,
         $extension = null,
         $context = null,
@@ -131,13 +131,53 @@ class Channels extends MediaBase
     }
 
     /**
+     * Create Channel
+     *
+     * @param string $endpoint (required) Endpoint to call.
+     * @param string $app The application that is subscribed to the originated channel. When the channel is answered, it will be passed to this Stasis application. Mutually exclusive with 'context', 'extension', 'priority', and 'label'.
+     * @param string $appArgs The application arguments to pass to the Stasis application.
+     * @param string $channelId The unique id to assign the channel on creation.
+     * @param string $otherChannelId The unique id to assign the second channel when using local channels.
+     * @param string $formats The format name capability list to use if originator is not specified. Ex. "ulaw,slin16". Format names can be found with "core show codecs".
+     * @return Channel
+     * @throws InvalidParameterException
+     * @throws ServerException
+     */
+    public function create(
+        $endpoint,
+        $app,
+        $appArgs = null,
+        $channelId = null,
+        $otherChannelId = null,
+        $formats = null
+    ) {
+        $uri = 'channels';
+        try {
+            $response = $this->client->getEndpoint()->post($uri, [
+                'form_params' => [
+                    'endpoint' => $endpoint,
+                    'app' => $app,
+                    'appArgs' => $appArgs,
+                    'channelId' => $channelId,
+                    'otherChannelId' => $otherChannelId,
+                    'formats' => $formats,
+                ]
+            ]);
+        } catch (RequestException $e) {
+            $this->processRequestException($e);
+        }
+
+        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+    }
+
+    /**
      * Channel details.
      *
      * @param string $channelId
      * @return Channel
      * @throws NotFoundException
      */
-    public function getChannel($channelId)
+    public function get($channelId)
     {
         $uri = "channels/$channelId";
         try {
@@ -171,7 +211,7 @@ class Channels extends MediaBase
      * @throws InvalidParameterException
      * @throws ServerException
      */
-    public function createChannelWithId(
+    public function originateWithId(
         $endpoint,
         $extension = null,
         $context = null,
@@ -217,7 +257,7 @@ class Channels extends MediaBase
      * @param string $channelId Channel's id
      * @throws NotFoundException
      */
-    public function deleteChannel($channelId)
+    public function delete($channelId)
     {
         $uri = "channels/$channelId";
         try {
@@ -235,7 +275,7 @@ class Channels extends MediaBase
     public function hangup($channelId)
     {
         try {
-            $this->deleteChannel($channelId);
+            $this->delete($channelId);
         } catch (\Exception $ignore) {
             // Don't throw exception if the channel doesn't exist
         }
@@ -635,6 +675,31 @@ class Channels extends MediaBase
                     'whisper' => $whisper,
                     'app' => $app,
                     'appArgs' => $appArgs,
+                ]
+            ]);
+        } catch (RequestException $e) {
+            $this->processRequestException($e);
+        }
+
+        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+    }
+
+    /**
+     * @param string $channelId Channel's id
+     * @param string $caller Channel ID of caller
+     * @param int $timeout (default 30) Timeout (in seconds) before giving up dialing, or -1 for no timeout.
+     * @return Channel
+     * @throws InvalidParameterException
+     * @throws NotFoundException
+     */
+    public function dial($channelId, $caller, $timeout)
+    {
+        $uri = "channels/$channelId/dial";
+        try {
+            $response = $this->client->getEndpoint()->post($uri, [
+                'form_params' => [
+                    'caller' => $caller,
+                    'timeout' => $timeout
                 ]
             ]);
         } catch (RequestException $e) {
