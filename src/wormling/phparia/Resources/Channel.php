@@ -714,6 +714,20 @@ class Channel extends Resource
         return $this->client->channels()->startSnoopWithId($this->id, $spy, $whisper, $app, $appArgs, $snoopId);
     }
 
+	/**
+	 *  Dial a created channel.
+	 *
+	 * @param string $caller Channel ID of caller
+	 * @param int $timeout (default 30) Timeout (in seconds) before giving up dialing, or -1 for no timeout.
+	 * @return Channel
+	 * @throws InvalidParameterException
+	 * @throws NotFoundException
+	 */
+	public function dial($caller, $timeout)
+	{
+		return $this->client->channels()->dial($this->id, $caller, $timeout);
+	}
+
     /**
      * @param AriClient $client
      * @param string $response
