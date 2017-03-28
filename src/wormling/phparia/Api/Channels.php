@@ -685,6 +685,8 @@ class Channels extends MediaBase
     }
 
     /**
+	 * Dial a created channel.
+	 *
      * @param string $channelId Channel's id
      * @param string $caller Channel ID of caller
      * @param int $timeout (default 30) Timeout (in seconds) before giving up dialing, or -1 for no timeout.
