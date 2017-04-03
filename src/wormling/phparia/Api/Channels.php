@@ -151,7 +151,7 @@ class Channels extends MediaBase
         $otherChannelId = null,
         $formats = null
     ) {
-        $uri = 'channels';
+        $uri = 'channels/create';
         try {
             $response = $this->client->getEndpoint()->post($uri, [
                 'form_params' => [
