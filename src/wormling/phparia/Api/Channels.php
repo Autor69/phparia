@@ -698,7 +698,7 @@ class Channels extends MediaBase
     {
         $uri = "channels/$channelId/dial";
         try {
-            $response = $this->client->getEndpoint()->post($uri, [
+            $this->client->getEndpoint()->post($uri, [
                 'form_params' => [
                     'caller' => $caller,
                     'timeout' => $timeout
@@ -707,8 +707,6 @@ class Channels extends MediaBase
         } catch (RequestException $e) {
             $this->processRequestException($e);
         }
-
-        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
     }
 
     /**
