@@ -276,22 +276,6 @@ class Channel extends Resource
     /**
      * @param callable $callback
      */
-    public function onChannelLeftBridge(callable $callback)
-    {
-        $this->on(Event::CHANNEL_LEFT_BRIDGE.'_'.$this->getId(), $callback);
-    }
-
-    /**
-     * @param callable $callback
-     */
-    public function onceChannelLeftBridge(callable $callback)
-    {
-        $this->once(Event::CHANNEL_LEFT_BRIDGE.'_'.$this->getId(), $callback);
-    }
-
-    /**
-     * @param callable $callback
-     */
     public function onChannelStateChange(callable $callback)
     {
         $this->on(Event::CHANNEL_STATE_CHANGED.'_'.$this->getId(), $callback);

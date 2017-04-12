@@ -57,7 +57,7 @@ class ChannelLeftBridge extends Event implements IdentifiableEventInterface
 
     public function getEventId()
     {
-        return "{$this->getType()}_{$this->getChannel()->getId()}";
+        return "{$this->getType()}_{$this->getBridge()->getId()}";
     }
 
     /**

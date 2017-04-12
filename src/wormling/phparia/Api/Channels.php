@@ -54,7 +54,7 @@ class Channels extends MediaBase
      *
      * @return Channel[]
      */
-    public function list()
+    public function listAll()
     {
         $uri = '/channels';
         $response = $this->client->getEndpoint()->get($uri);
@@ -690,7 +690,6 @@ class Channels extends MediaBase
      * @param string $channelId Channel's id
      * @param string $caller Channel ID of caller
      * @param int $timeout (default 30) Timeout (in seconds) before giving up dialing, or -1 for no timeout.
-     * @return Channel
      * @throws InvalidParameterException
      * @throws NotFoundException
      */

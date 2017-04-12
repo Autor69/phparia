@@ -224,6 +224,22 @@ class Bridge extends Resource
     {
         $this->once(Event::BRIDGE_ATTENDED_TRANSFER.'_'.$this->getId(), $callback);
     }
+    
+	/**
+	 * @param callable $callback
+	 */
+	public function onChannelLeftBridge(callable $callback)
+	{
+		$this->on(Event::CHANNEL_LEFT_BRIDGE.'_'.$this->getId(), $callback);
+	}
+
+	/**
+	 * @param callable $callback
+	 */
+	public function onceChannelLeftBridge(callable $callback)
+	{
+		$this->once(Event::CHANNEL_LEFT_BRIDGE.'_'.$this->getId(), $callback);
+	}
 
     /**
      * Shut down a bridge. If any channels are in this bridge, they will be removed and resume whatever they were doing beforehand.
