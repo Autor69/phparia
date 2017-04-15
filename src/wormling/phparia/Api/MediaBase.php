@@ -54,7 +54,7 @@ abstract class MediaBase extends AriClientAware
         $uri = "{$this->getType()}/$id/moh";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'mohClass' => $mohClass,
                 ]
             ]);
@@ -104,7 +104,7 @@ abstract class MediaBase extends AriClientAware
 
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'media' => $media,
                     'lang' => $lang,
                     'offsetms' => $offsetms,
@@ -147,7 +147,7 @@ abstract class MediaBase extends AriClientAware
         $uri = "{$this->getType()}/$id/play/$playbackId";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'media' => $media,
                     'lang' => $lang,
                     'offsetms' => $offsetms,
@@ -192,7 +192,7 @@ abstract class MediaBase extends AriClientAware
         $uri = "{$this->getType()}/$id/record";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'name' => $name,
                     'format' => $format,
                     'maxDurationSeconds' => $maxDurationSeconds,

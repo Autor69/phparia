@@ -62,7 +62,7 @@ class Bridges extends MediaBase
     {
         $uri = 'bridges';
         $response = $this->client->getEndpoint()->post($uri, [
-            'form_params' => [
+            'json' => [
                 'bridgeId' => $bridgeId,
                 'type' => $type,
                 'name' => $name,
@@ -84,7 +84,7 @@ class Bridges extends MediaBase
     {
         $uri = "bridges/$bridgeId";
         $response = $this->client->getEndpoint()->post($uri, [
-            'form_params' => [
+            'json' => [
                 'type' => $type,
                 'name' => $name,
             ]
@@ -143,7 +143,7 @@ class Bridges extends MediaBase
         $uri = "bridges/$bridgeId/addChannel";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'channel' => $channel,
                     'role' => $role,
                 ]
@@ -168,7 +168,7 @@ class Bridges extends MediaBase
         $uri = "bridges/$bridgeId/removeChannel";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'channel' => $channel,
                 ]
             ]);

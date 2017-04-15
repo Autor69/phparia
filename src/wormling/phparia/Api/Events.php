@@ -44,7 +44,7 @@ class Events extends AriClientAware
     {
         $uri = 'events';
         $response = $this->client->getEndpoint()->get($uri, [
-            'form_params' => [
+            'json' => [
                 'app' => $app,
                 'subscribeAll' => $subscribeAll,
             ]
@@ -74,7 +74,7 @@ class Events extends AriClientAware
         $uri = "events/user/$eventName";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'application' => $application,
                     'source' => $source,
                     'variables' => array_map('strval', $variables),

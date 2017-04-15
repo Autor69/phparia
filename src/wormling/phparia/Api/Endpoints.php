@@ -67,7 +67,7 @@ class Endpoints extends AriClientAware
         $uri = 'endpoints/sendMessage';
         try {
             $this->client->getEndpoint()->put($uri, [
-                'form_params' => [
+                'json' => [
                     'to' => $to,
                     'from' => $from,
                     'body' => $body,
@@ -141,7 +141,7 @@ class Endpoints extends AriClientAware
         $uri = "endpoints/$tech/$resource/sendMessage";
         try {
             $this->client->getEndpoint()->put($uri, [
-                'form_params' => [
+                'json' => [
                     'from' => $from,
                     'body' => $body,
                     'variables' => array_map('strval', $variables),

@@ -100,7 +100,7 @@ class Recordings extends AriClientAware
         $uri = "recordings/stored/$recordingName/copy";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'destinationRecordingName' => $destinationRecordingName,
                 ]
             ]);

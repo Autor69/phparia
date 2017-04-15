@@ -86,7 +86,7 @@ class DeviceStates extends AriClientAware
         $uri = "deviceStates/$deviceName";
         try {
             $this->client->getEndpoint()->put($uri, [
-                'form_params' => [
+                'json' => [
                     'deviceState' => $deviceState,
                 ]
             ]);

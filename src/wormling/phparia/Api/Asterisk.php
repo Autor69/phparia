@@ -88,7 +88,7 @@ class Asterisk extends AriClientAware
 
         try {
             $response = $this->client->getEndpoint()->put($uri, [
-                'form_params' => [
+                'json' => [
                     'fields' => array_map('strval', $fields)
                 ]
             ]);
@@ -255,7 +255,7 @@ class Asterisk extends AriClientAware
 
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'configuration' => $configuration
                 ]
             ]);
@@ -344,7 +344,7 @@ class Asterisk extends AriClientAware
 
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'variable' => $variable,
                     'value' => $value
                 ]

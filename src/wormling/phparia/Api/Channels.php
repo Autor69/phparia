@@ -107,7 +107,7 @@ class Channels extends MediaBase
         $uri = 'channels';
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'endpoint' => $endpoint,
                     'extension' => $extension,
                     'context' => $context,
@@ -154,7 +154,7 @@ class Channels extends MediaBase
         $uri = 'channels/create';
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'endpoint' => $endpoint,
                     'app' => $app,
                     'appArgs' => $appArgs,
@@ -229,7 +229,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'endpoint' => $endpoint,
                     'extension' => $extension,
                     'context' => $context,
@@ -296,7 +296,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/continue";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'context' => $context,
                     'extension' => $extension,
                     'priority' => $priority,
@@ -323,7 +323,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/redirect";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'endpoint' => $endpoint
                 ]
             ]);
@@ -401,7 +401,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/dtmf";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'dtmf' => $dtmf,
                     'before' => $before,
                     'between' => $between,
@@ -427,7 +427,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/mute";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'direction' => $direction,
                 ]
             ]);
@@ -538,7 +538,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/variable";
         try {
             $response = $this->client->getEndpoint()->get($uri, [
-                'form_params' => [
+                'json' => [
                     'variable' => $variable,
                 ]
             ]);
@@ -590,7 +590,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/variable";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'variable' => $variable,
                     'value' => $value,
                 ]
@@ -637,7 +637,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/snoop";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'spy' => $spy,
                     'whisper' => $whisper,
                     'app' => $app,
@@ -670,7 +670,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/snoop/$snoopId";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'spy' => $spy,
                     'whisper' => $whisper,
                     'app' => $app,
@@ -698,7 +698,7 @@ class Channels extends MediaBase
         $uri = "channels/$channelId/dial";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'caller' => $caller,
                     'timeout' => $timeout
                 ]

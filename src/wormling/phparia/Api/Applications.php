@@ -85,7 +85,7 @@ class Applications extends AriClientAware
         $uri = "applications/$applicationName/subscription";
         try {
             $response = $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'eventSource' => $eventSource,
                 ]
             ]);

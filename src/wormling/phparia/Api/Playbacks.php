@@ -87,7 +87,7 @@ class Playbacks extends AriClientAware
         $uri = "playbacks/$playbackId/control";
         try {
             $this->client->getEndpoint()->post($uri, [
-                'form_params' => [
+                'json' => [
                     'operation' => $operation,
                 ]
             ]);

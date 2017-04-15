@@ -80,7 +80,7 @@ class Mailboxes extends AriClientAware
         $uri = "mailboxes/$mailboxName";
         try {
             $this->client->getEndpoint()->put($uri, [
-                'form_params' => [
+                'json' => [
                     'newMessages' => $newMessages,
                     'oldMessages' => $oldMessages,
                 ]
