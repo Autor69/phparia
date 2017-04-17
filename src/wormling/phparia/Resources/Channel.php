@@ -273,6 +273,22 @@ class Channel extends Resource
         $this->once(Event::CHANNEL_HANGUP_REQUEST.'_'.$this->getId(), $callback);
     }
 
+	/**
+	 * @param callable $callback
+	 */
+	public function onChannelLeftBridge(callable $callback)
+	{
+		$this->on(Event::CHANNEL_LEFT_BRIDGE.'_'.$this->getId(), $callback);
+	}
+
+	/**
+	 * @param callable $callback
+	 */
+	public function onceChannelLeftBridge(callable $callback)
+	{
+		$this->once(Event::CHANNEL_LEFT_BRIDGE.'_'.$this->getId(), $callback);
+	}
+
     /**
      * @param callable $callback
      */
