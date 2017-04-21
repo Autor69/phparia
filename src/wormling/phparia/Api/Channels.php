@@ -580,7 +580,6 @@ class Channels extends MediaBase
      * @param string $channelId
      * @param string $variable
      * @param string $value
-     * @return Variable
      * @throws InvalidParameterException
      * @throws NotFoundException
      * @throws ConflictException
@@ -589,7 +588,7 @@ class Channels extends MediaBase
     {
         $uri = "channels/$channelId/variable";
         try {
-            $response = $this->client->getEndpoint()->post($uri, [
+            $this->client->getEndpoint()->post($uri, [
                 'json' => [
                     'variable' => $variable,
                     'value' => $value,
@@ -598,8 +597,6 @@ class Channels extends MediaBase
         } catch (RequestException $e) {
             $this->processRequestException($e);
         }
-
-        return new Variable(\GuzzleHttp\json_decode($response->getBody()));
     }
 
     /**
