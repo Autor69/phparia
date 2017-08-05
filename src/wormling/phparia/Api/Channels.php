@@ -444,15 +444,19 @@ class Channels extends MediaBase
      * @throws NotFoundException
      * @throws ConflictException
      */
-    public function unmute($channelId, $direction)
-    {
-        $uri = "channels/$channelId/mute?direction=".\GuzzleHttp\json_encode($direction);
-        try {
-            $this->client->getEndpoint()->delete($uri);
-        } catch (RequestException $e) {
-            $this->processRequestException($e);
-        }
-    }
+	public function unmute($channelId, $direction)
+	{
+		$uri = "channels/$channelId/mute";
+		try {
+			$this->client->getEndpoint()->delete($uri, [
+				'json' => [
+					'direction' => $direction,
+				]
+			]);
+		} catch (RequestException $e) {
+			$this->processRequestException($e);
+		}
+	}
 
     /**
      * Hold a channel.
