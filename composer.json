@@ -30,16 +30,6 @@
       "phparia": "src/wormling"
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Devristo/phpws"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/wormling/evenement"
-    }
-  ],
   "extra": {
     "incenteev-parameters": {
       "file": "src/wormling/phparia/config.yml",
