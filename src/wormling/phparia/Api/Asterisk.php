@@ -171,7 +171,7 @@ class Asterisk extends AriClientAware
      */
     public function getModule($moduleName)
     {
-        $uri = "asterisk/module/$moduleName";
+        $uri = "asterisk/modules/$moduleName";
 
         $response = $this->client->getEndpoint()->get($uri);
 
@@ -187,7 +187,7 @@ class Asterisk extends AriClientAware
      */
     public function loadModule($moduleName)
     {
-        $uri = "asterisk/module/$moduleName";
+        $uri = "asterisk/modules/$moduleName";
 
         $this->client->getEndpoint()->post($uri);
     }
@@ -202,7 +202,7 @@ class Asterisk extends AriClientAware
      */
     public function unloadModule($moduleName)
     {
-        $uri = "asterisk/module/$moduleName";
+        $uri = "asterisk/modules/$moduleName";
 
         $this->client->getEndpoint()->delete($uri);
     }
@@ -217,7 +217,7 @@ class Asterisk extends AriClientAware
      */
     public function reloadModule($moduleName)
     {
-        $uri = "asterisk/module/$moduleName";
+        $uri = "asterisk/modules/$moduleName";
 
         $this->client->getEndpoint()->put($uri);
     }
