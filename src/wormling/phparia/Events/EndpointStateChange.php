@@ -26,7 +26,7 @@ use phparia\Resources\Endpoint;
  *
  * @author Brian Smith <wormling@gmail.com>
  */
-class EndpointStateChange extends Event
+class EndpointStateChange extends Event implements IdentifiableEventInterface
 {
     /**
      * @var Endpoint
@@ -40,6 +40,11 @@ class EndpointStateChange extends Event
     {
         return $this->endpoint;
     }
+
+	public function getEventId()
+	{
+		return "{$this->getType()}_{$this->getEndpoint()->getResource()}";
+	}
 
     /**
      * @param AriClient $client
