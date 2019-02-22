@@ -18,12 +18,15 @@
 
 namespace phparia\Resources;
 
+use phparia\Client\AriClient;
+use phparia\Events\Event;
+
 /**
  * Detailed information about a contact on an endpoint.
  *
  * @author Eric Smith <eric2733@gmail.com>
  */
-class ContactInfo extends Response
+class ContactInfo extends Resource
 {
     /**
      * @var string The Address of Record this contact belongs to.
@@ -77,12 +80,28 @@ class ContactInfo extends Response
         return $this->uri;
     }
 
+	/**
+	 * @param callable $callback
+	 */
+	public function onContactStatusChange(callable $callback)
+	{
+		$this->on(Event::CONTACT_STATUS_CHANGE.'_'.$this->getResource(), $callback);
+	}
+
+	/**
+	 * @param callable $callback
+	 */
+	public function onceContactStatusChange(callable $callback)
+	{
+		$this->once(Event::CONTACT_STATUS_CHANGE.'_'.$this->getResource(), $callback);
+	}
+
     /**
      * @param string $response
      */
-    public function __construct($response)
-    {
-        parent::__construct($response);
+	public function __construct(AriClient $client, $response)
+	{
+		parent::__construct($client, $response);
 
         $this->aor = $this->getResponseValue('aor');
         $this->contactStatus = $this->getResponseValue('contact_status');
