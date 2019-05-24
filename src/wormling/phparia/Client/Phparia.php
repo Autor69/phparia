@@ -148,13 +148,13 @@ class Phparia extends PhpariaApi
         $this->wsClient->on(Event::STASIS_END, $callback);
     }
 
-	/**
-	 * @param callable|callable $callback
-	 */
-	public function onEndpointStateChange(callable $callback)
-	{
-		$this->wsClient->on(Event::ENDPOINT_STATE_CHANGE, $callback);
-	}
+    /**
+     * @param callable|callable $callback
+     */
+    public function onEndpointStateChange(callable $callback)
+    {
+    	$this->wsClient->on(Event::ENDPOINT_STATE_CHANGE, $callback);
+    }
 
     /**
      * @return WebSocket
